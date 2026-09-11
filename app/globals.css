@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cosmic-purple: #160f2d;
+  --deep-purple: #24163f;
+  --royal-purple: #5b3a82;
+  --celestial-gold: #e8c77b;
+  --gold-light: #f6d98b;
+  --lotus-pink: #e9a7c4;
+  --moon-cream: #fff8ef;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--cosmic-purple);
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+/* NAVIGATION */
+
+.astro-nav {
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.astro-nav:hover {
+  color: var(--gold-light);
+}
+
+.astro-nav.active {
+  color: var(--gold-light);
+}
+
+.astro-nav.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--celestial-gold);
+}
+
+/* BIRTH FORM */
+
+.astro-input {
+  width: 100%;
+  border: 1px solid rgba(232, 199, 123, 0.3);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 14px 16px;
+  color: white;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.astro-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.astro-input:hover {
+  border-color: rgba(232, 199, 123, 0.55);
+}
+
+.astro-input:focus {
+  border-color: var(--celestial-gold);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(232, 199, 123, 0.1);
+}
+
+/* DATE AND TIME INPUT */
+
+input[type="date"],
+input[type="time"] {
+  color-scheme: dark;
+}
+
+/* SELECTION */
+
+::selection {
+  background: var(--lotus-pink);
+  color: var(--cosmic-purple);
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .astro-nav.active::after {
+    display: none;
+  }
 }
